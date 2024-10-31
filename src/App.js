@@ -1,10 +1,13 @@
+import { Route, Routes } from "react-router-dom";
+import { HomePage, PageMovie } from "./layouts";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline text-red-300">
-        Hello world!
-      </h1>
+      <Routes>
+        <Route path="*" element={<HomePage/>}></Route>
+        <Route path="/danh-sach" element={<PageMovie/>}></Route>
+      </Routes>
     </div>
   );
 }
