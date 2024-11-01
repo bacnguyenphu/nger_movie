@@ -40,7 +40,7 @@ function Header() {
     ]
 
     return (
-        <div className="h-[80px] flex items-center bg-black-fade">
+        <div className="h-[80px] flex items-center bg-black-fade-top fixed z-50 w-full">
             <div className="px-28 flex items-center w-full">
                 <div className="logo w-1/4 flex items-center">
                     <RiMovie2Line size={'3rem'} color="blue" />
@@ -64,6 +64,7 @@ function Header() {
                     {menu.map((item, index) => {
                         return (
                             <NavLink
+                            key={index}
                                 to={item.path}
                                 className={({isActive}) => {
                                     return isActive ? activeStyle : ''

@@ -1,6 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import { HomePage, PageMovie } from "./layouts";
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
 function App() {
   return (
     <div className="App">
