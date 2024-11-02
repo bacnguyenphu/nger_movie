@@ -9,4 +9,8 @@ const GetInforMovie = (slugMovie)=>{
     return axios.get(`phim/${slugMovie}`)
 }
 
-export {GetNewMoviesUpdated,GetInforMovie}
+const GetSingleMovie = (page,limit)=>{
+    return axios.get(`v1/api/danh-sach/phim-le?page=${page}&limit=${limit}`)
+}
+
+export {GetNewMoviesUpdated,GetInforMovie,GetSingleMovie}

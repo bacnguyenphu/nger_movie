@@ -3,7 +3,7 @@ import { IoMdPlay } from "react-icons/io";
 import { GetNewMoviesUpdated } from "../service/apiService";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination,Navigation } from 'swiper/modules';
+import {  Navigation } from 'swiper/modules';
 
 function NewUpdateMovies() {
 
@@ -27,8 +27,6 @@ function NewUpdateMovies() {
         fetchNewUpdateMovie();
     }, []);
 
-    console.log('check updateMovies>>', updateMovies);
-
 
     return (
         <div className="newupdatemovies px-28 text-white pb-6">
@@ -36,7 +34,7 @@ function NewUpdateMovies() {
                 <FaRegStar size={'1.5rem'} color="blue" />
                 <span className="font-semibold text-[18px]">Phim mới cập nhập</span>
             </div>
-            
+
             <Swiper
                 spaceBetween={30}
                 pagination={{
@@ -49,39 +47,40 @@ function NewUpdateMovies() {
                 {updateMovies && updateMovies.length > 0
                     && updateMovies.map((updateMovie, index) => {
                         return (
+                            <div key={`updateMovies${index}`}>
+                                <SwiperSlide>
+                                    <div className="gap-3 grid grid-cols-10">
+                                        {updateMovie.map((item, index) => {
+                                            return (
+                                                <div
+                                                    key={`${item._id}-${index}`}
+                                                    className={`h-[177px] cursor-pointer flex items-end rounded-lg overflow-hidden bg-center bg-cover bg-no-repeat relative`}
+                                                    style={{ backgroundImage: `url(${item.poster_url})` }}
+                                                >
+                                                    <div className="absolute size-full bg-black-fade-bottom2 flex items-center justify-center group">
+                                                        <div className="animate-scale-up-center hidden group-hover:block">
+                                                            <span className="border-2 border-white size-10 flex items-center justify-center rounded-full  ">
+                                                                <IoMdPlay size={'1.5rem'} color="red" />
+                                                            </span>
+                                                        </div>
 
-                            <SwiperSlide>
-                                <div className="gap-3 grid grid-cols-10">
-                                    {updateMovie.map((item, index) => {
-                                        return (
-                                            <div
-                                                className={`h-[177px] cursor-pointer flex items-end rounded-lg overflow-hidden bg-center bg-cover bg-no-repeat relative`}
-                                                style={{ backgroundImage: `url(${item.poster_url})` }}
-                                            >
-                                                <div className="absolute size-full bg-black-fade-bottom2 flex items-center justify-center group">
-                                                    <div className="animate-scale-up-center hidden group-hover:block">
-                                                        <span className="border-2 border-white size-10 flex items-center justify-center rounded-full  ">
-                                                            <IoMdPlay size={'1.5rem'} color="red" />
-                                                        </span>
                                                     </div>
-
+                                                    <span className="absolute bg-blue-600 rounded-3xl text-[12px] px-2 flex items-center top-1 left-1">{item.year}</span>
+                                                    <div className="flex items-center relative">
+                                                        <div className="px-1 text-[13px] font-semibold">{item.name}</div>
+                                                    </div>
                                                 </div>
-                                                <span className="absolute bg-blue-600 rounded-3xl text-[12px] px-2 flex items-center top-1 left-1">{item.year}</span>
-                                                <div className="flex items-center relative">
-                                                    <div className="px-1 text-[13px] font-semibold">{item.name}</div>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </SwiperSlide>
-
+                                            )
+                                        })}
+                                    </div>
+                                </SwiperSlide>
+                            </div>
                         )
                     })
 
                 }
             </Swiper>
-            
+
         </div>
     );
 }

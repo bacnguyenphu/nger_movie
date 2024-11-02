@@ -58,7 +58,7 @@ function Slider() {
 
                 {updateMovies.map((updateMovie, index) => {
                     return (
-                        <div key={`update${updateMovie._id, index}`}>
+                        <div key={`update${updateMovie._id}-${index}`}>
                             <SwiperSlide>
                                 <div
                                     className={`relative h-[590px] w-full bg-center bg-cover cursor-grab active:cursor-grabbing`}
