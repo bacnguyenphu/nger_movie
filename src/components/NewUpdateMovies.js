@@ -31,7 +31,7 @@ function NewUpdateMovies() {
     return (
         <div className="newupdatemovies px-28 text-white pb-6">
             <div className="flex items-center gap-2 py-5">
-                <FaRegStar size={'1.5rem'} color="blue" />
+                <FaRegStar size={'1.5rem'} color="#2563EB" />
                 <span className="font-semibold text-[18px]">Phim mới cập nhập</span>
             </div>
 

@@ -28,7 +28,7 @@ module.exports = {
         }
       },
       boxShadow: {
-        'custom': 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+        'custom': 'rgba(14, 30, 37, 0.24) 0px 2px 4px 0px, rgba(14, 30, 37, 0.5) 0px 2px 16px 0px',
       },
     },
   },

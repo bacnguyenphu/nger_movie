@@ -1,4 +1,4 @@
-import { Header, NewUpdateMovies, Slider } from "../components";
+import { Header, ListMovieInHomePage, NewUpdateMovies, Slider } from "../components";
 import TopSeriesMovies from "../components/TopSeriesMovies";
 import TopSingleMovies from "../components/TopSingleMovies";
 
@@ -13,10 +13,12 @@ function HomePage() {
             <NewUpdateMovies/>
             <div className="flex px-28 min-h-96 gap-x-8">
                 {/* list phim */}
-                <div className="w-[75%] border border-red-400"></div>
+                <div className="w-[75%]">
+                    <ListMovieInHomePage/>
+                </div>
 
                 {/* sidebar right */}
-                <div className="w-[300px]">
+                <div className="w-[300px] flex flex-col gap-8">
                     <TopSingleMovies/>
                     <TopSeriesMovies/>
                 </div>

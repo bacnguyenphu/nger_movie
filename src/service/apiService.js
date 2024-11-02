@@ -13,4 +13,10 @@ const GetSingleMovie = (page,limit)=>{
     return axios.get(`v1/api/danh-sach/phim-le?page=${page}&limit=${limit}`)
 }
 
-export {GetNewMoviesUpdated,GetInforMovie,GetSingleMovie}
+const GetSeriesMovie = (page,limit)=>{
+    return axios.get(`v1/api/danh-sach/phim-bo?page=${page}&limit=${limit}`)
+}
+
+
+
+export {GetNewMoviesUpdated,GetInforMovie,GetSingleMovie,GetSeriesMovie}
