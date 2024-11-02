@@ -58,7 +58,6 @@ function ListTypeMovieInHomePage({ movie }) {
                                             <IoMdPlay size={'1.5rem'} color="red" />
                                         </span>
                                     </div>
-
                                 </div>
                                 <span className="absolute bg-blue-600 rounded-3xl text-[12px] px-2 flex items-center top-1 left-1">{item.year}</span>
                                 <div className="flex items-center relative">

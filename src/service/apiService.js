@@ -17,6 +17,16 @@ const GetSeriesMovie = (page,limit)=>{
     return axios.get(`v1/api/danh-sach/phim-bo?page=${page}&limit=${limit}`)
 }
 
+const GetCartoon = (page,limit)=>{
+    return axios.get(`v1/api/danh-sach/tv-shows?page=${page}&limit=${limit}`)
+}
 
+const GetMovieGenre = ()=>{
+    return axios.get(`the-loai`)
+}
 
-export {GetNewMoviesUpdated,GetInforMovie,GetSingleMovie,GetSeriesMovie}
+const GetCountry = ()=>{
+    return axios.get(`quoc-gia`)
+}
+
+export {GetNewMoviesUpdated,GetInforMovie,GetSingleMovie,GetSeriesMovie,GetCartoon,GetMovieGenre,GetCountry}

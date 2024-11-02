@@ -7,7 +7,7 @@ function ListMovieInHomePage() {
                 <ListTypeMovieInHomePage movie='singleMovie' />
                 <ListTypeMovieInHomePage movie='seriesMovie' />
             </div>
-            <div>
+            <div className="mt-10">
                 <CartoonInHomePage />
             </div>
         </div>

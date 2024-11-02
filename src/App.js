@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { HomePage, PageMovie } from "./layouts";
+import { HomePage, PageMovie,DetailPage } from "./layouts";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -10,8 +10,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="*" element={<HomePage/>}></Route>
-        <Route path="/danh-sach" element={<PageMovie/>}></Route>
+        <Route path="" element={<DetailPage />}>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/danh-sach" element={<PageMovie />}></Route>
+        </Route>
+
       </Routes>
     </div>
   );
