@@ -37,5 +37,9 @@ const GetMovieGenre = (genre,page,limit)=>{
     return axios.get(`v1/api/the-loai/${genre}?page=${page}&limit=${limit}`)
 }
 
+const GetMovieCountry = (genre,page,limit)=>{
+    return axios.get(`v1/api/quoc-gia/${genre}?page=${page}&limit=${limit}`)
+}
 
-export {GetNewMoviesUpdated,GetInforMovie,GetSingleMovie,GetSeriesMovie,GetCartoon,GetGenre,GetCountry,GetTvShows,GetMovieGenre,}
+
+export {GetNewMoviesUpdated,GetInforMovie,GetSingleMovie,GetSeriesMovie,GetCartoon,GetGenre,GetCountry,GetTvShows,GetMovieGenre,GetMovieCountry}

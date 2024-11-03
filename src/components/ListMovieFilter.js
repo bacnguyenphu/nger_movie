@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { GetSeriesMovie, GetSingleMovie, GetCartoon, GetTvShows,GetMovieGenre } from "../service/apiService";
+import { GetSeriesMovie, GetSingleMovie, GetCartoon, GetTvShows, GetMovieGenre, GetMovieCountry } from "../service/apiService";
 import { BiSolidMoviePlay } from "react-icons/bi";
 import { IoMdPlay } from "react-icons/io";
 import ReactPaginate from 'react-paginate';
@@ -10,30 +10,25 @@ import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 function ListMovieFilter() {
 
     const param = useParams()
-    const location =useLocation()
-    const genre  = location.state?.genre
+    const location = useLocation()
+    const genre = location.state?.genre
     const [listMovie, setListMovie] = useState([])
     const [totalPages, setTotalPages] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
-    const [titlePage, setTitlePage] = useState('')
+    const [titlePage, setTitlePage] = useState('Sorry')
 
-    console.log('check genre>>',genre);
-    
-    console.log(listMovie);  
-    
     useEffect(() => {
         fetchMovies()
-        console.log('check param>>', param);
         // test()
-    }, [currentPage, param.filter,genre])
+    }, [currentPage, param.filter, genre])
 
     const fetchMovies = async () => {
 
-        if(param.filter==='phim-bo'){
-            const res = await GetSeriesMovie(currentPage,29)
-            if(res.status==='success'){
+        if (param.filter === 'phim-bo') {
+            const res = await GetSeriesMovie(currentPage, 29)
+            if (res.status === 'success') {
                 setListMovie(res.data.items)
-                setTitlePage(res.data.titlePage)
+                setTitlePage(res.data.breadCrumb[0].name)
                 setTotalPages(res.data.params.pagination.totalPages)
             }
         }
@@ -41,7 +36,7 @@ function ListMovieFilter() {
             const res = await GetSingleMovie(currentPage, 29)
             if (res.status === 'success') {
                 setListMovie(res.data.items)
-                setTitlePage(res.data.titlePage)
+                setTitlePage(res.data.breadCrumb[0].name)
                 setTotalPages(res.data.params.pagination.totalPages)
             }
         }
@@ -49,7 +44,7 @@ function ListMovieFilter() {
             const res = await GetTvShows(currentPage, 29)
             if (res.status === 'success') {
                 setListMovie(res.data.items)
-                setTitlePage(res.data.titlePage)
+                setTitlePage(res.data.breadCrumb[0].name)
                 setTotalPages(res.data.params.pagination.totalPages)
             }
         }
@@ -57,19 +52,32 @@ function ListMovieFilter() {
             const res = await GetCartoon(currentPage, 29)
             if (res.status === 'success') {
                 setListMovie(res.data.items)
-                setTitlePage(res.data.titlePage)
+                setTitlePage(res.data.breadCrumb[0].name)
                 setTotalPages(res.data.params.pagination.totalPages)
             }
         }
-        else{
+        else {
             if (param?.genre === genre) {
-            const res = await GetMovieGenre(genre,currentPage, 29)
-            if (res.status === 'success') {
-                setListMovie(res.data.items)
-                setTitlePage(res.data.titlePage)
-                setTotalPages(res.data.params.pagination.totalPages)
+                const res = await GetMovieGenre(genre, currentPage, 29)
+                if (res.status === 'success'&&res.data.params.pagination.totalItems>0) {
+                    setListMovie(res.data.items)
+                    setTitlePage(res.data.breadCrumb[0].name)
+                    setTotalPages(res.data.params.pagination.totalPages)
+                }
+                else {
+                    const res = await GetMovieCountry(genre, currentPage, 29)
+                    if (res.status === 'success'&&res.data.params.pagination.totalItems>0) {
+                        setListMovie(res.data.items)
+                        setTitlePage(res.data.breadCrumb[0].name)
+                        setTotalPages(res.data.params.pagination.totalPages)
+                    }
+                    else{
+                        setListMovie([])
+                        setTitlePage('')
+                        setTotalPages(1)
+                    }
+                }
             }
-        }
         }
     }
 
@@ -80,7 +88,13 @@ function ListMovieFilter() {
 
     function scrollToTop() {
         window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+    }
+
+    //test
+    // const test = async()=>{
+    //     // const res = await GetMovieCountry(genre, currentPage, 29)
+    //     // console.log('check countri',res);
+    // }
 
     return (
         <div id="section1" className="text-white">
@@ -115,7 +129,7 @@ function ListMovieFilter() {
                             </div>
                         )
                     })
-                    ||<div>Không có kết quả</div>
+                    || <div>Không có kết quả</div>
                 }
 
             </div>

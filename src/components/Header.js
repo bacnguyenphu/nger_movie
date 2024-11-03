@@ -78,7 +78,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre,onClickMovieGenre }) 
                     </Tippy>
 
                     <Tippy
-                        content={<TippyCountries conutries={conutries}/>}
+                        content={<TippyCountries conutries={conutries} onClickMovieGenre={onClickMovieGenre}/>}
                         interactive={true}
                         animation="shift-away"
                         placement="bottom-end"

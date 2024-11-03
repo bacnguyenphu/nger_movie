@@ -100,16 +100,16 @@ function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre })
                         {tempGetCountries && tempGetCountries.length > 0 &&
                             tempGetCountries.map((item, index) => {
                                 return (
-                                    <NavLink
+                                    <div
                                         key={item._id}
                                     >
                                         <div
                                             className="cursor-pointer hover:text-blue-500 text-[14px] mb-1"
-                                            // onClick={() => { onClickMovieGenre(item.slug) }}
+                                            onClick={() => { onClickMovieGenre(item.slug) }}
                                         >
                                             {item.name}
                                         </div>
-                                    </NavLink>
+                                    </div>
                                 )
                             })
                         }
