@@ -1,67 +1,19 @@
 import { RiMovie2Line } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
-import { GetMovieGenre,GetCountry } from "../service/apiService";
-import { useEffect, useState } from "react";
 
-function Footer() {
-
-    const [movieGenre, setMovieGenre] = useState([])
-    const [conutries,setGetCountries]= useState([])
+function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre }) {
 
     let tempMovieGenre = []
-    let tempGetCountries=[]
+    let tempGetCountries = []
 
-    useEffect(() => {
-        fetchMovieGenre()
-        fetchCountry()
-    }, [])
-
-    const fetchMovieGenre = async () => {
-        let res = await GetMovieGenre()
-        if (res) {
-            setMovieGenre(res)
-        }
-
+    if (movieGenre && movieGenre.length > 0) {
+        tempMovieGenre = movieGenre.slice(movieGenre.length - 6, movieGenre.length - 1)
     }
 
-    const fetchCountry = async () => {
-        let res = await GetCountry()
-        if (res) {
-            setGetCountries(res)
-        }
-
+    if (conutries && conutries.length > 0) {
+        tempGetCountries = conutries.slice(0, 5)
     }
 
-    if(movieGenre&&movieGenre.length>0){
-        tempMovieGenre = movieGenre.slice(0,5)
-    }
-
-    if(conutries&&conutries.length>0){
-        tempGetCountries = conutries.slice(0,5)
-    }
-
-    const menu = [
-        {
-            text: "Trang chủ",
-            path: '/'
-        },
-        {
-            text: "Phim bộ",
-            path: '/phim-bo'
-        },
-        {
-            text: "Phim lẻ",
-            path: '/phim-le'
-        },
-        {
-            text: "TV Shows",
-            path: '/tv-shows'
-        },
-        {
-            text: "Hoạt hình",
-            path: '/hoat-hinh'
-        },
-    ]
 
     const infor = [
         {
@@ -85,7 +37,6 @@ function Footer() {
             path: '/'
         },
     ]
-
 
     return (
         <div className="px-28 bg-[#151419] py-10 flex">
@@ -112,7 +63,7 @@ function Footer() {
                                     key={index}
                                     to={item.path}
                                 >
-                                    <div className="cursor-pointer hover:text-blue-500 text-[14px] mb-1">
+                                    <div className="cursor-pointer hover:text-blue-500 text-[14px] mb-1" onClick={() => scrollToTop()}>
                                         {item.text}
                                     </div>
                                 </NavLink>
@@ -125,16 +76,18 @@ function Footer() {
                             Thể loại
                         </div>
                         {tempMovieGenre && tempMovieGenre.length > 0 &&
-                            tempMovieGenre.map((item, index) => {
+                            tempMovieGenre.map((item) => {
                                 return (
-                                    <NavLink
+                                    <div
                                         key={item._id}
-                                        to={item.path}
                                     >
-                                        <div className="cursor-pointer hover:text-blue-500 text-[14px] mb-1">
+                                        <div
+                                            className="cursor-pointer hover:text-blue-500 text-[14px] mb-1"
+                                            onClick={() => { onClickMovieGenre(item.slug) }}
+                                        >
                                             {item.name}
                                         </div>
-                                    </NavLink>
+                                    </div>
                                 )
                             })
                         }
@@ -149,9 +102,11 @@ function Footer() {
                                 return (
                                     <NavLink
                                         key={item._id}
-                                        to={item.path}
                                     >
-                                        <div className="cursor-pointer hover:text-blue-500 text-[14px] mb-1">
+                                        <div
+                                            className="cursor-pointer hover:text-blue-500 text-[14px] mb-1"
+                                            // onClick={() => { onClickMovieGenre(item.slug) }}
+                                        >
                                             {item.name}
                                         </div>
                                     </NavLink>

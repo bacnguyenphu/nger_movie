@@ -1,32 +1,29 @@
-import { Header, ListMovieInHomePage, NewUpdateMovies, Slider } from "../components";
-import Footer from "../components/Footer";
-import TopSeriesMovies from "../components/TopSeriesMovies";
-import TopSingleMovies from "../components/TopSingleMovies";
+import { ListMovieInHomePage, NewUpdateMovies, TopSeriesMovies, TopSingleMovies, Slider } from "../components";
 
 function HomePage() {
-    return ( 
-        <div className="bg-[#1A191F]">
-            
-            
+    return (
+        <div className="">
+
+
             <div className="slider">
-                <Slider/>
+                <Slider />
             </div>
-            <NewUpdateMovies/>
+            <NewUpdateMovies />
             <div className="flex px-28 min-h-96 gap-x-8 pb-16">
                 {/* list phim */}
                 <div className="w-[75%]">
-                    <ListMovieInHomePage/>
+                    <ListMovieInHomePage />
                 </div>
 
                 {/* sidebar right */}
                 <div className="w-[300px] flex flex-col gap-8">
-                    <TopSingleMovies/>
-                    <TopSeriesMovies/>
+                    <TopSingleMovies />
+                    <TopSeriesMovies />
                 </div>
             </div>
-           
+
         </div>
-     );
+    );
 }
 
 export default HomePage;

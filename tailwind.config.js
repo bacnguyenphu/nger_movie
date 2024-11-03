@@ -1,3 +1,5 @@
+const { transform } = require('lodash');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -15,7 +17,8 @@ module.exports = {
         'black-fade-bottom2': 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5))',
       },
       animation: {
-        "scale-up-center": "scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both"
+        "scale-up-center": "scale-up-center 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both",
+        "height-down":"height-down 0.2s both "
       },
       keyframes: {
         "scale-up-center": {
@@ -25,7 +28,15 @@ module.exports = {
           "100%": {
             transform: 'scale(1)',
           }
-        }
+        },
+        "height-down":{
+          "0%":{
+            height:'0%'
+          },
+          "100%":{
+            height:'100%'
+          }
+        },
       },
       boxShadow: {
         'custom': 'rgba(14, 30, 37, 0.24) 0px 2px 4px 0px, rgba(14, 30, 37, 0.5) 0px 2px 16px 0px',

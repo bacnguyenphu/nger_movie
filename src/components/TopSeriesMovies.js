@@ -1,7 +1,7 @@
 import { IoMdPlay } from "react-icons/io";
 import { GetSeriesMovie } from "../service/apiService";
 import { useEffect, useState } from "react";
-import Tippy from '@tippyjs/react/headless'; 
+import Tippy from '@tippyjs/react/headless';
 
 function TopSeriesMovies() {
 
@@ -24,7 +24,7 @@ function TopSeriesMovies() {
             <div className="h-[62px] flex items-center justify-center bg-[#19181D] text-xl">
                 <span>Top phim bộ</span>
             </div>
-            <div className="p-6 bg-[#1E1D22] flex flex-col gap-5 grid grid-cols-3 grid-rows-2 gap-x-[10px] gap-y-2">
+            <div className="p-6 bg-[#1E1D22] grid grid-cols-3 grid-rows-2 gap-x-[10px] gap-y-2">
                 {topSeriesMovie && topSeriesMovie.length > 0 &&
                     topSeriesMovie.map(item => {
                         return (
@@ -46,9 +46,9 @@ function TopSeriesMovies() {
                                     <Tippy
                                         render={attrs => (
                                             <div className="box text-white text-[14px] bg-slate-700 px-3" tabIndex="-1" {...attrs}>
-                                              {item.name}
+                                                {item.name}
                                             </div>
-                                          )}
+                                        )}
                                         placement="bottom-start"
                                     >
                                         <div className="px-1 text-[12px] font-semibold line-clamp-2">{item.name}</div>
