@@ -17,6 +17,7 @@ function App() {
           <Route path="/danh-sach" element={<PageMovie />}>
             <Route path="filter/:filter" element={<ListMovieFilter />}></Route>
             <Route path=":genre" element={<ListMovieFilter />}></Route>
+            <Route path="search/:search" element={<ListMovieFilter />}></Route>
           </Route>
         </Route>
 

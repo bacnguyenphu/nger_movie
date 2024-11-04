@@ -1,7 +1,7 @@
 import { RiMovie2Line } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
-import { useRef } from "react";
-import { NavLink } from "react-router-dom"
+import { useRef, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom"
 import { FaAngleDown } from "react-icons/fa6";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/animations/shift-away.css';
@@ -9,10 +9,12 @@ import TippyMovieGenre from "./TippyMovieGenre";
 import TippyCountries from "./TippyCountries";
 
 
-function Header({ menu, scrollToTop, conutries, movieGenre,onClickMovieGenre }) {
+function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre }) {
 
     const search = useRef()
     const input = useRef()
+    const navigate = useNavigate()
+    const [valueInput, setValueInput] = useState('')
 
     const showInput = () => {
         if (search.current) {
@@ -21,12 +23,31 @@ function Header({ menu, scrollToTop, conutries, movieGenre,onClickMovieGenre }) 
         }
     };
 
+    const handleSubmitSearch = () => {
+        if (valueInput === '') return
+        // const inputChuyenDI = encodeURIComponent(removeVietnameseTones(valueInput))
+        scrollToTop()
+        navigate(`/danh-sach/search/${valueInput}`, { state: { search: valueInput } })
+        setValueInput('')
+    }
+
     const hiddenInput = () => {
         if (search.current) {
             search.current.classList.remove('w-[300px]'); // Sử dụng toggle để mở/đóng
             input.current.focus()
         }
     }
+
+    //Hàm này là hàm xoá dấu của tiêng việt
+    // const removeVietnameseTones = (str) => {
+    //     return str
+    //         .normalize('NFD') // Chuẩn hóa chuỗi về dạng tổ hợp
+    //         .replace(/[\u0300-\u036f]/g, '') // Xóa các dấu
+    //         .replace(/đ/g, 'd') // Thay thế đ thường
+    //         .replace(/Đ/g, 'D') // Thay thế Đ hoa
+    //         .replace(/\s+/g, ' ') // Xóa khoảng trắng thừa
+    //         .trim(); // Xóa khoảng trắng ở đầu và cuối chuỗi
+    // };
 
     const activeStyle = 'relative after:absolute after:w-full after:h-1 after:bg-blue-500 after:bottom-0 after:left-0 after:rounded-xl text-blue-500'
 
@@ -66,7 +87,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre,onClickMovieGenre }) 
                     })}
 
                     <Tippy
-                        content={<TippyMovieGenre movieGenre={movieGenre} onClickMovieGenre={onClickMovieGenre}/>}
+                        content={<TippyMovieGenre movieGenre={movieGenre} onClickMovieGenre={onClickMovieGenre} />}
                         interactive={true}
                         placement="bottom-end"
                         animation="shift-away"
@@ -78,7 +99,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre,onClickMovieGenre }) 
                     </Tippy>
 
                     <Tippy
-                        content={<TippyCountries conutries={conutries} onClickMovieGenre={onClickMovieGenre}/>}
+                        content={<TippyCountries conutries={conutries} onClickMovieGenre={onClickMovieGenre} />}
                         interactive={true}
                         animation="shift-away"
                         placement="bottom-end"
@@ -102,9 +123,12 @@ function Header({ menu, scrollToTop, conutries, movieGenre,onClickMovieGenre }) 
                         <input
                             className="w-full h-full outline-none border-none pl-2 pr-11"
                             ref={input}
+                            value={valueInput}
+                            onChange={(e) => { setValueInput(e.target.value) }}
                         />
                         <span
                             className="px-2 cursor-pointer absolute right-0 size-[40px] flex items-center"
+                            onClick={() => { handleSubmitSearch() }}
                         >
                             <FiSearch size={'1.5rem'} />
                         </span>

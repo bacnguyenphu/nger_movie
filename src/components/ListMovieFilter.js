@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { GetSeriesMovie, GetSingleMovie, GetCartoon, GetTvShows, GetMovieGenre, GetMovieCountry } from "../service/apiService";
+import { GetSeriesMovie, GetSingleMovie, GetCartoon, GetTvShows, GetMovieGenre, GetMovieCountry, GetSearchMovie } from "../service/apiService";
 import { BiSolidMoviePlay } from "react-icons/bi";
 import { IoMdPlay } from "react-icons/io";
 import ReactPaginate from 'react-paginate';
@@ -9,13 +9,30 @@ import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 
 function ListMovieFilter() {
 
+    const removeVietnameseTones = (str) => {
+        return str
+            .normalize('NFD') // Chuẩn hóa chuỗi về dạng tổ hợp
+            .replace(/[\u0300-\u036f]/g, '') // Xóa các dấu
+            .replace(/đ/g, 'd') // Thay thế đ thường
+            .replace(/Đ/g, 'D') // Thay thế Đ hoa
+            .replace(/\s+/g, ' ') // Xóa khoảng trắng thừa
+            .trim(); // Xóa khoảng trắng ở đầu và cuối chuỗi
+    };
+
     const param = useParams()
     const location = useLocation()
     const genre = location.state?.genre
+    const search = location.state?.search
     const [listMovie, setListMovie] = useState([])
     const [totalPages, setTotalPages] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
     const [titlePage, setTitlePage] = useState('Sorry')
+
+    console.log('check search>>', search);
+    console.log('check pram.search>>', param);
+    console.log('check param.gêreen>>', param.genre);
+    console.log('check genre>>',genre);
+
 
     useEffect(() => {
         fetchMovies()
@@ -57,27 +74,47 @@ function ListMovieFilter() {
             }
         }
         else {
-            if (param?.genre === genre) {
+            if (param?.genre === genre&&genre) {
                 const res = await GetMovieGenre(genre, currentPage, 29)
-                if (res.status === 'success'&&res.data.params.pagination.totalItems>0) {
+                if (res.status === 'success' && res.data.params.pagination.totalItems > 0) {
                     setListMovie(res.data.items)
                     setTitlePage(res.data.breadCrumb[0].name)
                     setTotalPages(res.data.params.pagination.totalPages)
                 }
                 else {
                     const res = await GetMovieCountry(genre, currentPage, 29)
-                    if (res.status === 'success'&&res.data.params.pagination.totalItems>0) {
+                    if (res.status === 'success' && res.data.params.pagination.totalItems > 0) {
                         setListMovie(res.data.items)
                         setTitlePage(res.data.breadCrumb[0].name)
                         setTotalPages(res.data.params.pagination.totalPages)
                     }
-                    else{
+                    else {
                         setListMovie([])
-                        setTitlePage('')
+                        setTitlePage('nôn')
                         setTotalPages(1)
                     }
                 }
             }
+            else {
+                if (param?.search === search) {
+                    const res = await GetSearchMovie(encodeURIComponent(search), currentPage, 29)
+                    if (res.status === 'success') {
+                        setListMovie(res.data.items)
+                        setTitlePage(res.data.titlePage)
+                        setTotalPages(res.data.params.pagination.totalPages)
+                    }
+                }
+                else {
+                    setListMovie([])
+                    setTitlePage('')
+                    setTotalPages(1)
+                }
+            }
+            // else {
+            //     setListMovie([])
+            //     setTitlePage('')
+            //     setTotalPages(1)
+            // }
         }
     }
 
@@ -90,10 +127,14 @@ function ListMovieFilter() {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    //test
-    // const test = async()=>{
-    //     // const res = await GetMovieCountry(genre, currentPage, 29)
-    //     // console.log('check countri',res);
+
+
+    // test
+    // const test = async () => {
+    //     if (param?.search === search) {
+    //         const res = await GetSearchMovie(encodeURIComponent(search), currentPage, 29)
+    //         console.log('check search movie', res);
+    //     }
     // }
 
     return (
