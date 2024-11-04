@@ -33,6 +33,11 @@ function DetailPage() {
         scrollToTop()
     }
 
+    const backToHomePage = () => {
+        navigate('/')
+        scrollToTop()
+    }
+
     useEffect(() => {
         fetchMovieGenre()
         fetchCountry()
@@ -67,11 +72,30 @@ function DetailPage() {
 
     return (
         <div className="bg-[#1A191F]">
-            <div><Header menu={menu} scrollToTop={scrollToTop} conutries={conutries} movieGenre={movieGenre} onClickMovieGenre={onClickMovieGenre}/></div>
+            <div>
+                <Header
+                    menu={menu}
+                    scrollToTop={scrollToTop}
+                    conutries={conutries}
+                    movieGenre={movieGenre}
+                    onClickMovieGenre={onClickMovieGenre}
+                    backToHomePage={backToHomePage}
+                />
+
+            </div>
 
             <Outlet />
 
-            <div><Footer menu={menu} scrollToTop={scrollToTop} conutries={conutries} movieGenre={movieGenre} onClickMovieGenre={onClickMovieGenre} /></div>
+            <div>
+                <Footer
+                    menu={menu}
+                    scrollToTop={scrollToTop}
+                    conutries={conutries}
+                    movieGenre={movieGenre}
+                    onClickMovieGenre={onClickMovieGenre}
+                    backToHomePage={backToHomePage}
+                />
+            </div>
         </div>
     );
 }

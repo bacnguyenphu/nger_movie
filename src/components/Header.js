@@ -9,7 +9,7 @@ import TippyMovieGenre from "./TippyMovieGenre";
 import TippyCountries from "./TippyCountries";
 
 
-function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre }) {
+function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,backToHomePage }) {
 
     const search = useRef()
     const input = useRef()
@@ -29,6 +29,12 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre })
         scrollToTop()
         navigate(`/danh-sach/search/${valueInput}`, { state: { search: valueInput } })
         setValueInput('')
+    }
+
+    const handlePressEnter = (e)=>{
+        if(e.keyCode===13){
+            handleSubmitSearch()
+        }
     }
 
     const hiddenInput = () => {
@@ -52,9 +58,11 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre })
     const activeStyle = 'relative after:absolute after:w-full after:h-1 after:bg-blue-500 after:bottom-0 after:left-0 after:rounded-xl text-blue-500'
 
     return (
-        <div className="h-[80px] flex items-center bg-black-fade-top fixed z-50 w-full">
+        <div className="h-[80px] flex items-center bg-black-fade-top fixed z-[100] w-full">
             <div className="px-28 flex items-center w-full">
-                <div className="logo w-1/4 flex items-center">
+                <div className="logo w-1/4 flex items-center cursor-pointer"
+                    onClick={()=>{backToHomePage()}}
+                >
                     <RiMovie2Line size={'3rem'} color="#2563EB" />
                     <span className="text-3xl font-bold font-serif text-blue-600">NgerMovie</span>
                 </div>
@@ -123,8 +131,8 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre })
                         <input
                             className="w-full h-full outline-none border-none pl-2 pr-11"
                             ref={input}
-                            value={valueInput}
                             onChange={(e) => { setValueInput(e.target.value) }}
+                            onKeyDown={(e)=>{handlePressEnter(e)}}
                         />
                         <span
                             className="px-2 cursor-pointer absolute right-0 size-[40px] flex items-center"

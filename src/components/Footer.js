@@ -1,10 +1,11 @@
 import { RiMovie2Line } from "react-icons/ri";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
-function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre }) {
+function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,backToHomePage }) {
 
     let tempMovieGenre = []
     let tempGetCountries = []
+    const navigate = useNavigate()
 
     if (movieGenre && movieGenre.length > 0) {
         tempMovieGenre = movieGenre.slice(movieGenre.length - 6, movieGenre.length - 1)
@@ -41,7 +42,9 @@ function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre })
     return (
         <div className="px-28 bg-[#151419] py-10 flex">
             <div className=" w-[30%]">
-                <div className="logo w-1/4 flex items-center cursor-pointer">
+                <div className="logo w-1/4 flex items-center cursor-pointer cursor-pointer"
+                    onClick={()=>{backToHomePage()}}
+                >
                     <span><RiMovie2Line size={'3rem'} color="#2563EB" /></span>
                     <span className="text-3xl font-bold font-serif text-blue-600">NgerMovie</span>
                 </div>

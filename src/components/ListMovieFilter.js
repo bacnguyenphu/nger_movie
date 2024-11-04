@@ -9,15 +9,15 @@ import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 
 function ListMovieFilter() {
 
-    const removeVietnameseTones = (str) => {
-        return str
-            .normalize('NFD') // Chuẩn hóa chuỗi về dạng tổ hợp
-            .replace(/[\u0300-\u036f]/g, '') // Xóa các dấu
-            .replace(/đ/g, 'd') // Thay thế đ thường
-            .replace(/Đ/g, 'D') // Thay thế Đ hoa
-            .replace(/\s+/g, ' ') // Xóa khoảng trắng thừa
-            .trim(); // Xóa khoảng trắng ở đầu và cuối chuỗi
-    };
+    // const removeVietnameseTones = (str) => {
+    //     return str
+    //         .normalize('NFD') // Chuẩn hóa chuỗi về dạng tổ hợp
+    //         .replace(/[\u0300-\u036f]/g, '') // Xóa các dấu
+    //         .replace(/đ/g, 'd') // Thay thế đ thường
+    //         .replace(/Đ/g, 'D') // Thay thế Đ hoa
+    //         .replace(/\s+/g, ' ') // Xóa khoảng trắng thừa
+    //         .trim(); // Xóa khoảng trắng ở đầu và cuối chuỗi
+    // };
 
     const param = useParams()
     const location = useLocation()
@@ -28,16 +28,10 @@ function ListMovieFilter() {
     const [currentPage, setCurrentPage] = useState(1)
     const [titlePage, setTitlePage] = useState('Sorry')
 
-    console.log('check search>>', search);
-    console.log('check pram.search>>', param);
-    console.log('check param.gêreen>>', param.genre);
-    console.log('check genre>>',genre);
-
-
     useEffect(() => {
         fetchMovies()
         // test()
-    }, [currentPage, param.filter, genre])
+    }, [currentPage, param.filter, genre,search])
 
     const fetchMovies = async () => {
 
@@ -170,7 +164,7 @@ function ListMovieFilter() {
                             </div>
                         )
                     })
-                    || <div>Không có kết quả</div>
+                    || <div>Không có kết quả vui lòng kiểm tra lại đường truyền</div>
                 }
 
             </div>
