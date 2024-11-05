@@ -64,7 +64,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,ba
                     onClick={()=>{backToHomePage()}}
                 >
                     <RiMovie2Line size={'3rem'} color="#2563EB" />
-                    <span className="text-3xl font-bold font-serif text-blue-600">NgerMovie</span>
+                    <span className="text-3xl font-bold font-serif text-blue-600">NgerMovies</span>
                 </div>
 
                 <div className="w-2/4 flex items-center justify-between text-[17px] font-semibold text-white">

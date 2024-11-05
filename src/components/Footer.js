@@ -52,7 +52,7 @@ function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,ba
                     <Link to={'/'} className="text-blue-600 text-base">NgerMovie</Link> Xem phim mới miễn phí nhanh chất lượng cao. Phimmoi online Việt Sub, Thuyết minh, lồng tiếng chất lượng HD. Xem phim nhanh online chất lượng cao
                 </div>
                 <div className="text-gray-400 text-[12px]">
-                    Copyright 2024 © <Link to={'/'} className="text-blue-600 text-base">NgerMovie</Link>
+                    Copyright 2024 © <Link to={'/'} className="text-blue-600 text-base">NgerMovies</Link>
                 </div>
             </div>
 

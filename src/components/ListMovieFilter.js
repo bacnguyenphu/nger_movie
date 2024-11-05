@@ -87,7 +87,7 @@ function ListMovieFilter() {
                     }
                     else {
                         setListMovie([])
-                        setTitlePage('nôn')
+                        setTitlePage('')
                         setTotalPages(1)
                     }
                 }
