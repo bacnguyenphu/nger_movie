@@ -3,12 +3,15 @@ import { IoMdPlay } from "react-icons/io";
 import { GetSingleMovie, GetSeriesMovie } from "../../service/apiService";
 import { useEffect, useState,useContext } from "react";
 import { watchMovieContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 function ListTypeMovieInHomePage({ movie }) {
 
     const [listMovie, setListMovie] = useState([])
     const[typeMovie,setTypeMovie] = useState('')
+    const[slugMovie,setSlugMovie] = useState('')
     const navigateWatchMovie = useContext(watchMovieContext)
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetchMovies()
@@ -21,6 +24,7 @@ function ListTypeMovieInHomePage({ movie }) {
                 setListMovie(res.data.items)
             }
             setTypeMovie('Phim lẻ')
+            setSlugMovie('/danh-sach/filter/phim-le')
         }
 
         if (movie === 'seriesMovie') {
@@ -29,6 +33,7 @@ function ListTypeMovieInHomePage({ movie }) {
                 setListMovie(res.data.items)
             }
             setTypeMovie('Phim bộ')
+            setSlugMovie('/danh-sach/filter/phim-bo')
         }
 
     }
@@ -39,7 +44,7 @@ function ListTypeMovieInHomePage({ movie }) {
             <div className="flex items-center gap-3 py-5">
                 <span><BiSolidMoviePlay size={'1.5rem'} color="#2563EB" /></span>
                 <span className="font-semibold text-[18px]">{typeMovie}</span>
-                <button className="bg-blue-500 px-3 text-[12px] rounded-lg">Xem thêm</button>
+                <button className="bg-blue-500 px-3 text-[12px] rounded-lg" onClick={()=>{navigate(slugMovie)}}>Xem thêm</button>
             </div>
 
             <div className="grid grid-cols-6 grid-rows-3 gap-[10px]">

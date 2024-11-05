@@ -72,7 +72,7 @@ function DetailPage() {
 
     return (
         <div className="bg-[#1A191F]">
-            <div>
+            <div className="">
                 <Header
                     menu={menu}
                     scrollToTop={scrollToTop}
@@ -84,7 +84,9 @@ function DetailPage() {
 
             </div>
 
-            <Outlet />
+            <div>
+                <Outlet />
+            </div>
 
             <div>
                 <Footer

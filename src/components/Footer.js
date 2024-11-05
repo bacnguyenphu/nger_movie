@@ -42,11 +42,11 @@ function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,ba
     return (
         <div className="px-28 bg-[#151419] py-10 flex">
             <div className=" w-[30%]">
-                <div className="logo w-1/4 flex items-center cursor-pointer cursor-pointer"
+                <div className="logo w-1/4 flex items-center cursor-pointer"
                     onClick={()=>{backToHomePage()}}
                 >
                     <span><RiMovie2Line size={'3rem'} color="#2563EB" /></span>
-                    <span className="text-3xl font-bold font-serif text-blue-600">NgerMovie</span>
+                    <span className="text-3xl font-bold font-serif text-blue-600">NgerMovies</span>
                 </div>
                 <div className="text-gray-400 text-[12px] my-3">
                     <Link to={'/'} className="text-blue-600 text-base">NgerMovies</Link> Xem phim mới miễn phí nhanh chất lượng cao. Phimmoi online Việt Sub, Thuyết minh, lồng tiếng chất lượng HD. Xem phim nhanh online chất lượng cao
@@ -56,7 +56,7 @@ function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,ba
                 </div>
             </div>
 
-            <div className=" w-[70%] flex pl-10">
+            <div className="w-[70%] flex pl-10">
                 <div className="flex gap-16">
                     <div className="flex flex-col text-white">
                         <div className="font-bold text-gray-600 text-xl mb-7">Danh mục</div>

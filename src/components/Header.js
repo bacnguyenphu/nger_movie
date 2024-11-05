@@ -58,16 +58,16 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,ba
     const activeStyle = 'relative after:absolute after:w-full after:h-1 after:bg-blue-500 after:bottom-0 after:left-0 after:rounded-xl text-blue-500'
 
     return (
-        <div className="h-[80px] flex items-center bg-black-fade-top fixed z-[100] w-full">
-            <div className="px-28 flex items-center w-full">
-                <div className="logo w-1/4 flex items-center cursor-pointer"
+        <div className="px-2 lg:px-4 xl:px-28 h-[80px] flex items-center fixed bg-black-fade-top z-[100] w-full">
+            <div className=" flex items-center w-full">
+                <div className="logo lg:w-1/4 flex items-center cursor-pointer"
                     onClick={()=>{backToHomePage()}}
                 >
                     <RiMovie2Line size={'3rem'} color="#2563EB" />
                     <span className="text-3xl font-bold font-serif text-blue-600">NgerMovies</span>
                 </div>
 
-                <div className="w-2/4 flex items-center justify-between text-[17px] font-semibold text-white">
+                <div className="xl:text-[17px] lg:flex text-[14px] hidden w-2/4 items-center justify-between font-semibold text-white">
                     {/* <div className="cursor-pointer">Trang chủ</div>
                     <div className="cursor-pointer">Phim bộ</div>
                     <div className="cursor-pointer">Phim lẻ</div>
@@ -121,7 +121,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,ba
 
                 </div>
 
-                <div className="w-1/4 flex justify-end">
+                <div className="lg:w-1/4 flex justify-end w-full">
                     <div
                         className="input-search bg-white h-10 flex items-center rounded-full size-[40px] overflow-hidden transition-all duration-500 ease-in-out relative"
                         ref={search}

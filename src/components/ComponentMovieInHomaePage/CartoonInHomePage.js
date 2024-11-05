@@ -3,11 +3,14 @@ import { IoMdPlay } from "react-icons/io";
 import { GetCartoon } from "../../service/apiService";
 import { useEffect, useState, useContext } from "react";
 import { watchMovieContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 function CartoonInHomePage() {
 
+    const navigate = useNavigate()
     const [listCartoon, setListCartoon] = useState([])
     const navigateWatchMovie = useContext(watchMovieContext)
+    const [slugMovie, setSlugMovie] = useState('')
 
     useEffect(() => {
         fetchCartoon()
@@ -17,6 +20,7 @@ function CartoonInHomePage() {
         const res = await GetCartoon(3, 15)
         if (res.status === 'success') {
             setListCartoon(res.data.items)
+            setSlugMovie('/danh-sach/filter/hoat-hinh')
         }
     }
 
@@ -25,7 +29,12 @@ function CartoonInHomePage() {
             <div className="flex items-center gap-3 py-5">
                 <span><BiSolidMoviePlay size={'1.5rem'} color="#2563EB" /></span>
                 <span className="font-semibold text-[18px]">Phim hoạt hình</span>
-                <button className="bg-blue-500 px-3 text-[12px] rounded-lg">Xem thêm</button>
+                <button
+                    className="bg-blue-500 px-3 text-[12px] rounded-lg"
+                    onClick={()=>{navigate(slugMovie)}}
+                    >
+                    Xem thêm
+                </button>
             </div>
             <div className="grid grid-cols-5 grid-rows-3 gap-[10px]">
 
