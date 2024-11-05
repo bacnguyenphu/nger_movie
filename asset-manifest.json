@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/nger_movie/static/css/main.91643ef6.css",
+    "main.js": "/nger_movie/static/js/main.cc2e39c5.js",
+    "index.html": "/nger_movie/index.html",
+    "main.91643ef6.css.map": "/nger_movie/static/css/main.91643ef6.css.map",
+    "main.cc2e39c5.js.map": "/nger_movie/static/js/main.cc2e39c5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.91643ef6.css",
+    "static/js/main.cc2e39c5.js"
+  ]
+}
