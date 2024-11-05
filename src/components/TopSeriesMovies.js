@@ -1,11 +1,13 @@
 import { IoMdPlay } from "react-icons/io";
 import { GetSeriesMovie } from "../service/apiService";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Tippy from '@tippyjs/react/headless';
+import { watchMovieContext } from "../App";
 
 function TopSeriesMovies() {
 
     const [topSeriesMovie, setTopSeriesMovie] = useState([])
+    const navigateWatchMovie = useContext(watchMovieContext)
 
     useEffect(() => {
         fetchTopSeriesMovie()
@@ -32,6 +34,7 @@ function TopSeriesMovies() {
                                 key={item._id}
                                 className={`h-[120px] cursor-pointer flex items-end rounded-lg overflow-hidden bg-center bg-cover bg-no-repeat relative`}
                                 style={{ backgroundImage: `url(https://phimimg.com/${item.poster_url})` }}
+                                onClick={() => { navigateWatchMovie(item.slug) }}
                             >
                                 <div className="absolute size-full bg-black-fade-bottom2 flex items-center justify-center group">
                                     <div className="animate-scale-up-center hidden group-hover:block">

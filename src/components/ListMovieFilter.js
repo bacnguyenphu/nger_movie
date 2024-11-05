@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { GetSeriesMovie, GetSingleMovie, GetCartoon, GetTvShows, GetMovieGenre, GetMovieCountry, GetSearchMovie } from "../service/apiService";
 import { BiSolidMoviePlay } from "react-icons/bi";
@@ -6,6 +6,7 @@ import { IoMdPlay } from "react-icons/io";
 import ReactPaginate from 'react-paginate';
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
+import { watchMovieContext } from "../App";
 
 function ListMovieFilter() {
 
@@ -27,6 +28,8 @@ function ListMovieFilter() {
     const [totalPages, setTotalPages] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
     const [titlePage, setTitlePage] = useState('Sorry')
+
+    const navigateWatchMovie = useContext(watchMovieContext)
 
     useEffect(() => {
         fetchMovies()
@@ -140,8 +143,6 @@ function ListMovieFilter() {
 
             <div className="grid grid-cols-6 grid-rows-3 gap-[10px]">
 
-
-
                 {listMovie && listMovie.length > 0 &&
                     listMovie.map(item => {
                         return (
@@ -149,6 +150,7 @@ function ListMovieFilter() {
                                 key={`${item._id}`}
                                 className={`h-[223px] cursor-pointer flex items-end rounded-lg overflow-hidden bg-center bg-cover bg-no-repeat duration-200 hover:shadow-custom hover:scale-125 hover:z-50 relative`}
                                 style={{ backgroundImage: `url(https://phimimg.com/${item.poster_url})` }}
+                                onClick={() => { navigateWatchMovie(item.slug) }}
                             >
                                 <div className="absolute size-full bg-black-fade-bottom2 flex items-center justify-center group">
                                     <div className="animate-scale-up-center hidden group-hover:block">
@@ -164,7 +166,7 @@ function ListMovieFilter() {
                             </div>
                         )
                     })
-                    || <div>Không có kết quả vui lòng kiểm tra lại đường truyền</div>
+                    || <div>Không có kết quả</div>
                 }
 
             </div>

@@ -8,7 +8,9 @@ function HomePage() {
             <div className="slider">
                 <Slider />
             </div>
-            <NewUpdateMovies />
+            <div className="px-28">
+                <NewUpdateMovies />
+            </div>
             <div className="flex px-28 min-h-96 gap-x-8 pb-16">
                 {/* list phim */}
                 <div className="w-[75%]">

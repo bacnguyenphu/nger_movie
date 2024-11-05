@@ -1,11 +1,13 @@
 import { BiSolidMoviePlay } from "react-icons/bi";
 import { IoMdPlay } from "react-icons/io";
 import { GetCartoon } from "../../service/apiService";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { watchMovieContext } from "../../App";
 
 function CartoonInHomePage() {
 
     const [listCartoon, setListCartoon] = useState([])
+    const navigateWatchMovie = useContext(watchMovieContext)
 
     useEffect(() => {
         fetchCartoon()
@@ -33,6 +35,7 @@ function CartoonInHomePage() {
                             <div
                                 className="h-[101px] bg-center bg-cover rounded-lg relative flex flex-col justify-between overflow-hidden cursor-pointer group"
                                 style={{ backgroundImage: `url(https://phimimg.com/${item.poster_url})` }}
+                                onClick={() => { navigateWatchMovie(item.slug) }}
                             >
                                 <div className="bg-blue-600 rounded-xl text-[10px] w-fit px-2 mt-1 ml-1 relative z-50 group-hover:translate-y-[-30px] duration-200">
                                     <span className="mr-1">{item.episode_current}</span>

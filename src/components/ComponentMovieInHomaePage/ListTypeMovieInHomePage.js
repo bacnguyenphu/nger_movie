@@ -1,12 +1,14 @@
 import { BiSolidMoviePlay } from "react-icons/bi";
 import { IoMdPlay } from "react-icons/io";
 import { GetSingleMovie, GetSeriesMovie } from "../../service/apiService";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
+import { watchMovieContext } from "../../App";
 
 function ListTypeMovieInHomePage({ movie }) {
 
     const [listMovie, setListMovie] = useState([])
     const[typeMovie,setTypeMovie] = useState('')
+    const navigateWatchMovie = useContext(watchMovieContext)
 
     useEffect(() => {
         fetchMovies()
@@ -51,6 +53,7 @@ function ListTypeMovieInHomePage({ movie }) {
                                 key={`${item._id}`}
                                 className={`h-[223px] cursor-pointer flex items-end rounded-lg overflow-hidden bg-center bg-cover bg-no-repeat duration-200 hover:shadow-custom hover:scale-125 hover:z-50 relative`}
                                 style={{ backgroundImage: `url(https://phimimg.com/${item.poster_url})` }}
+                                onClick={() => { navigateWatchMovie(item.slug) }}
                             >
                                 <div className="absolute size-full bg-black-fade-bottom2 flex items-center justify-center group">
                                     <div className="animate-scale-up-center hidden group-hover:block">
