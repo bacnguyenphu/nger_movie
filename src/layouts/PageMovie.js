@@ -11,7 +11,7 @@ function PageMovie() {
             </div>
 
             {/* sidebar right */}
-            <div className="w-[300px] lg:flex flex-col gap-8 hidden">
+            <div className="w-[300px] lg:flex flex-col gap-8 hidden ">
                 <TopSingleMovies />
                 <TopSeriesMovies />
             </div>
