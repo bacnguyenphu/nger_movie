@@ -36,7 +36,7 @@ function CartoonInHomePage() {
                     Xem thêm
                 </button>
             </div>
-            <div className="grid grid-cols-5 grid-rows-3 gap-[10px]">
+            <div className="grid xl:grid-cols-5 xl:grid-rows-3 lg:grid-cols-3 grid-cols-2 gap-[10px]">
 
                 {listCartoon && listCartoon.length > 0 &&
                     listCartoon.map(item => {

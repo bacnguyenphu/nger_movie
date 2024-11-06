@@ -60,7 +60,7 @@ function WatchMovie() {
                 </div>
             </div>
 
-            <div className={`px-28 ${showModalWatch ? 'pt-64' : 'pt-16'}`}>
+            <div className={`px-2 lg:px-4 xl:px-28 ${showModalWatch ? 'pt-64' : 'pt-16'}`}>
                 <div className="font-semibold text-xl mb-1 flex items-center ">
                     <span><CgPlayListCheck size={'1.5rem'} color="#3b82f6" /></span>
                     <span>Danh sách tập phim</span>
@@ -84,8 +84,8 @@ function WatchMovie() {
 
             </div>
 
-            <div className={`flex px-28 min-h-96 gap-x-8 pb-16 mt-6`}>
-                <div className="w-[75%]">
+            <div className={`flex px-2 lg:px-4 xl:px-28 min-h-96 gap-x-8 pb-16 mt-6`}>
+                <div className="w-full lg:w-[75%]">
                     {(!_.isEmpty(inforMovie) && showModalWatch) && <InforMovieOnBanner movie={inforMovie.movie} />}
 
                     <div className="mt-5">
@@ -94,7 +94,7 @@ function WatchMovie() {
                 </div>
 
                 {/* sidebar right */}
-                <div className="w-[300px] flex flex-col gap-8">
+                <div className="w-[300px] lg:flex flex-col gap-8 hidden">
                     <TopSingleMovies />
                     <TopSeriesMovies />
                 </div>

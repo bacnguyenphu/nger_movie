@@ -8,7 +8,7 @@ function InforMovieOnBanner({ movie, watchNow }) {
     const navigateWatchMovie = useContext(watchMovieContext)
 
     return (
-        <div className=" relative z-50 w-[70%]">
+        <div className=" relative z-50 w-full lg:w-[70%]">
             <div className="text-2xl font-semibold text-white">
                 {movie.name}
             </div>

@@ -52,7 +52,7 @@ function NewUpdateMovies() {
                         return (
                             <div key={`updateMovies${index}`}>
                                 <SwiperSlide>
-                                    <div className="gap-3 grid grid-cols-10">
+                                    <div className="gap-3 grid grid-cols-2 lg:grid-cols-5 xl:grid-cols-10">
                                         {updateMovie.map((item, index) => {
                                             return (
                                                 <div

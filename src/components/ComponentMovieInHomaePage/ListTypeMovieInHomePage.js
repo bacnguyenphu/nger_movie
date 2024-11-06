@@ -47,7 +47,7 @@ function ListTypeMovieInHomePage({ movie }) {
                 <button className="bg-blue-500 px-3 text-[12px] rounded-lg" onClick={()=>{navigate(slugMovie)}}>Xem thêm</button>
             </div>
 
-            <div className="grid grid-cols-6 grid-rows-3 gap-[10px]">
+            <div className="grid xl:grid-cols-6 xl:grid-rows-3 lg:grid-cols-4 grid-cols-2 gap-[10px]">
 
 
 

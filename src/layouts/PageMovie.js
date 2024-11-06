@@ -4,14 +4,14 @@ import { TopSeriesMovies, TopSingleMovies } from "../components";
 
 function PageMovie() {
     return (
-        <div className="flex px-28 min-h-96 gap-x-8 pb-16 pt-32">
+        <div className="flex px-2 lg:px-4 xl:px-28 min-h-96 gap-x-8 pb-16 pt-32">
             {/* list phim */}
-            <div className="w-[75%]">
+            <div className="w-full lg:w-[75%]">
                 <Outlet />
             </div>
 
             {/* sidebar right */}
-            <div className="w-[300px] flex flex-col gap-8">
+            <div className="w-[300px] lg:flex flex-col gap-8 hidden">
                 <TopSingleMovies />
                 <TopSeriesMovies />
             </div>

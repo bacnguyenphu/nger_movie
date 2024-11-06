@@ -40,8 +40,8 @@ function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,ba
     ]
 
     return (
-        <div className="px-2 lg:px-4 xl:px-28 bg-[#151419] py-10 flex">
-            <div className=" w-[30%]">
+        <div className="px-2 lg:px-4 xl:px-28 bg-[#151419] py-10 flex ">
+            <div className="w-full lg:w-[30%]">
                 <div className="logo w-1/4 flex items-center cursor-pointer"
                     onClick={()=>{backToHomePage()}}
                 >
@@ -56,7 +56,7 @@ function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,ba
                 </div>
             </div>
 
-            <div className="w-[70%] flex pl-10">
+            <div className="w-[70%] lg:flex pl-10 lg:flex-row flex-col hidden">
                 <div className="flex gap-16">
                     <div className="flex flex-col text-white">
                         <div className="font-bold text-gray-600 text-xl mb-7">Danh mục</div>

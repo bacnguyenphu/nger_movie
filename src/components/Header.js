@@ -31,6 +31,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
         scrollToTop()
         navigate(`/danh-sach/search/${valueInput}`, { state: { search: valueInput } })
         setValueInput('')
+        setShowMenu(false)
     }
 
     const handlePressEnter = (e) => {
@@ -62,7 +63,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
 
     return (
         <div className="px-2 lg:px-4 xl:px-28 h-[80px] flex items-center fixed bg-black-fade-top z-[100] w-full">
-            <div className=" flex items-center w-full">
+            <div className=" flex lg:flex-row flex-col items-center w-full">
                 <div className="logo lg:w-1/4 flex items-center cursor-pointer"
                     onClick={() => { backToHomePage() }}
                 >
@@ -70,7 +71,30 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
                     <span className="text-3xl font-bold font-serif text-blue-600">NgerMovies</span>
                 </div>
 
-                <div className={`bg-[#1A191F] absolute w-[95%] left-0 lg:w-2/4 lg:h-full h-screen lg:bg-transparent top-[80px] lg:top-0 lg:relative lg:block z-50 overflow-y-auto lg:overflow-y-visible duration-700 ${showMenu ? '' : 'translate-x-[-100%]'}`}>
+                <div className={`bg-[#1A191F] absolute w-[95%] left-0 lg:w-2/4 lg:h-full h-screen lg:bg-transparent top-[80px] lg:top-0 lg:relative lg:block z-50 overflow-y-auto lg:overflow-y-visible duration-700 ${showMenu ? '' : 'translate-x-[-100%] lg:translate-x-[0px]'}`}>
+
+                    <div className="lg:w-1/4 flex lg:hidden justify-start pl-2 pt-5 w-full">
+                        <div
+                            className="input-search bg-white h-10 flex items-center rounded-full w-[300px] lg:size-[40px] overflow-hidden transition-all duration-700 ease-in-out relative"
+                            ref={search}
+                            onClick={() => showInput()}
+                            onBlur={() => hiddenInput()}
+                        >
+                            <input
+                                className="w-full h-full outline-none border-none pl-2 pr-11"
+                                ref={input}
+                                onChange={(e) => { setValueInput(e.target.value) }}
+                                onKeyDown={(e) => { handlePressEnter(e) }}
+                            />
+                            <span
+                                className="px-2 cursor-pointer absolute right-0 size-[40px] flex items-center"
+                                onClick={() => { handleSubmitSearch() }}
+                            >
+                                <FiSearch size={'1.5rem'} />
+                            </span>
+                        </div>
+                    </div>
+
                     <div className="xl:text-[17px] lg:flex lg:text-[14px] text-2xl items-center justify-between font-semibold text-white relative">
                         {/* <div className="cursor-pointer">Trang chủ</div>
                     <div className="cursor-pointer">Phim bộ</div>
@@ -122,13 +146,13 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
                     </div>
 
                 </div>
-                <div className={`absolute top-20 lg:hidden z-[200] -left-4 duration-700 ${showMenu?'translate-x-[520px] rotate-180':''}`}
+                <div className={`absolute top-24 lg:hidden z-[200] -left-4 duration-700 ${showMenu ? 'translate-x-[380px] rotate-180' : ''}`}
                     onClick={() => { setShowMenu(!showMenu) }}
                 >
                     <IoIosArrowDroprightCircle size={'3rem'} color="#2563EB" />
                 </div>
 
-                <div className="lg:w-1/4 flex justify-end w-full">
+                <div className="lg:w-1/4 hidden lg:flex justify-end w-full">
                     <div
                         className="input-search bg-white h-10 flex items-center rounded-full w-[300px] lg:size-[40px] overflow-hidden transition-all duration-700 ease-in-out relative"
                         ref={search}

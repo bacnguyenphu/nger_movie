@@ -141,7 +141,7 @@ function ListMovieFilter() {
                 <span className="font-semibold text-[18px]">Danh sách {titlePage}</span>
             </div>
 
-            <div className="grid grid-cols-6 grid-rows-3 gap-[10px]">
+            <div className="grid xl:grid-cols-6 lg:grid-cols-4 grid-cols-2 gap-[10px]">
 
                 {listMovie && listMovie.length > 0 &&
                     listMovie.map(item => {
@@ -170,7 +170,7 @@ function ListMovieFilter() {
                 }
 
             </div>
-            <div className="mt-20">
+            <div className="mt-20 lg:w-full">
                 <ReactPaginate
                     onPageChange={handlePageClick}
                     pageRangeDisplayed={5}
@@ -186,7 +186,7 @@ function ListMovieFilter() {
                     nextClassName="mx-1"
                     breakClassName="mx-1"
                     breakLinkClassName="block px-3 py-2 border border-gray-300 rounded hover:bg-blue-500"
-                    containerClassName=" flex justify-center mt-4 items-center"
+                    containerClassName=" flex flex-wrap justify-center mt-4 items-center"
                     activeClassName="bg-blue-500 overflow-hidden text-white"
                     renderOnZeroPageCount={null}
                 />
