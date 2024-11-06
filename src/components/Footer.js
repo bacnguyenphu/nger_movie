@@ -40,7 +40,7 @@ function Footer({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre,ba
     ]
 
     return (
-        <div className="px-28 bg-[#151419] py-10 flex">
+        <div className="px-2 lg:px-4 xl:px-28 bg-[#151419] py-10 flex">
             <div className=" w-[30%]">
                 <div className="logo w-1/4 flex items-center cursor-pointer"
                     onClick={()=>{backToHomePage()}}

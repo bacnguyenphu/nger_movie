@@ -70,7 +70,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
                     <span className="text-3xl font-bold font-serif text-blue-600">NgerMovies</span>
                 </div>
 
-                <div className={`bg-[#1A191F] absolute w-[95%] left-0 lg:w-2/4 lg:h-full h-screen lg:bg-transparent top-[80px] lg:top-0 lg:relative lg:block z-50 overflow-y-auto lg:overflow-y-visible duration-200 ${showMenu ? 'translate-x-[-100%]' : ''}`}>
+                <div className={`bg-[#1A191F] absolute w-[95%] left-0 lg:w-2/4 lg:h-full h-screen lg:bg-transparent top-[80px] lg:top-0 lg:relative lg:block z-50 overflow-y-auto lg:overflow-y-visible duration-700 ${showMenu ? '' : 'translate-x-[-100%]'}`}>
                     <div className="xl:text-[17px] lg:flex lg:text-[14px] text-2xl items-center justify-between font-semibold text-white relative">
                         {/* <div className="cursor-pointer">Trang chủ</div>
                     <div className="cursor-pointer">Phim bộ</div>
@@ -122,7 +122,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
                     </div>
 
                 </div>
-                <div className="absolute  lg:hidden"
+                <div className={`absolute top-20 lg:hidden z-[200] -left-4 duration-700 ${showMenu?'translate-x-[520px] rotate-180':''}`}
                     onClick={() => { setShowMenu(!showMenu) }}
                 >
                     <IoIosArrowDroprightCircle size={'3rem'} color="#2563EB" />
@@ -130,7 +130,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
 
                 <div className="lg:w-1/4 flex justify-end w-full">
                     <div
-                        className="input-search bg-white h-10 flex items-center rounded-full w-[300px] lg:size-[40px] overflow-hidden transition-all duration-500 ease-in-out relative"
+                        className="input-search bg-white h-10 flex items-center rounded-full w-[300px] lg:size-[40px] overflow-hidden transition-all duration-700 ease-in-out relative"
                         ref={search}
                         onClick={() => showInput()}
                         onBlur={() => hiddenInput()}
