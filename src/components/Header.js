@@ -69,7 +69,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
                     <span className="text-3xl font-bold font-serif text-blue-600">NgerMovies</span>
                 </div>
 
-                <div className="bg-[#1A191F] absolute w-[95%] left-0 lg:w-2/4 lg:bg-transparent top-[80px] lg:top-0 lg:relative lg:block z-50">
+                <div className="bg-[#1A191F] absolute w-[95%]  left-0 lg:w-2/4 lg:bg-transparent top-[80px] lg:top-0 lg:relative lg:block z-50 ">
                     <div className="xl:text-[17px] lg:flex lg:text-[14px] text-2xl items-center justify-between font-semibold text-white relative">
                         {/* <div className="cursor-pointer">Trang chủ</div>
                     <div className="cursor-pointer">Phim bộ</div>
@@ -90,8 +90,8 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
                                         return isActive ? activeStyle : ''
                                     }}
                                 >
-                                    <div className="cursor-pointer py-4 lg:py-0 pl-4 lg:pl-0 hover:text-blue-500">
-                                        <span className="" onClick={() => scrollToTop()}>
+                                    <div className="cursor-pointer py-4 lg:py-0 hover:text-blue-500">
+                                        <span className="lg:pl-0 pl-4" onClick={() => scrollToTop()}>
                                             {item.text}
                                         </span>
                                     </div>
@@ -99,33 +99,25 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
                             )
                         })}
 
-                        <Tippy
-                            content={<TippyMovieGenre movieGenre={movieGenre} onClickMovieGenre={onClickMovieGenre} />}
-                            interactive={true}
-                            placement="bottom-end"
-                            animation="shift-away"
-                            maxWidth={''}
-                            hideOnClick={true}
-                        >
-                            <div className="cursor-pointer flex items-center py-4 lg:py-0 pl-4 lg:pl-0">
-                                Thể loại
+                        <div className="cursor-pointer flex lg:flex-row flex-col lg:items-center items-start py-4 relative group">
+                            <div className="flex items-center">
+                                <span className="lg:pl-0 pl-4">Thể loại</span>
                                 <span className="ml-1"><FaAngleDown /></span>
                             </div>
-                        </Tippy>
+                            <div className="lg:absolute top-14 right-0 lg:hidden group-hover:block animate-slide-top">
+                                <TippyMovieGenre movieGenre={movieGenre} onClickMovieGenre={onClickMovieGenre} />
+                            </div>
+                        </div>
 
-                        <Tippy
-                            content={<TippyCountries conutries={conutries} onClickMovieGenre={onClickMovieGenre} />}
-                            interactive={true}
-                            animation="shift-away"
-                            placement="bottom-end"
-                            maxWidth={''}
-                        >
-                            <div className="cursor-pointer flex items-center  py-4 lg:py-0 pl-4 lg:pl-0">
-                                Quốc gia
+                        <div className="cursor-pointer flex lg:flex-row flex-col lg:items-center items-start py-4 relative group">
+                            <div className="flex items-center">
+                                <span className="lg:pl-0 pl-4">Quốc gia</span>
                                 <span className="ml-1"><FaAngleDown /></span>
                             </div>
-                        </Tippy>
-
+                            <div className="lg:absolute top-14 right-0 lg:hidden group-hover:block animate-slide-top">
+                                <TippyCountries conutries={conutries} onClickMovieGenre={onClickMovieGenre} />
+                            </div>
+                        </div>
                     </div>
 
                     <div className="absolute top-10 -right-6 lg:hidden">

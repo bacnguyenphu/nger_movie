@@ -17,8 +17,9 @@ function DetailPage() {
         if (res) {
             setMovieGenre(res)
         }
-
     }
+    console.log(conutries);
+    
 
     const fetchCountry = async () => {
         let res = await GetCountry()
