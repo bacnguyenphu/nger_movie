@@ -16,6 +16,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
     const input = useRef()
     const navigate = useNavigate()
     const [valueInput, setValueInput] = useState('')
+    const [showMenu, setShowMenu] = useState(false)
 
     const showInput = () => {
         if (search.current) {
@@ -69,7 +70,7 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
                     <span className="text-3xl font-bold font-serif text-blue-600">NgerMovies</span>
                 </div>
 
-                <div className="bg-[#1A191F] absolute w-[95%]  left-0 lg:w-2/4 lg:bg-transparent top-[80px] lg:top-0 lg:relative lg:block z-50 ">
+                <div className={`bg-[#1A191F] absolute w-[95%] left-0 lg:w-2/4 lg:h-full h-screen lg:bg-transparent top-[80px] lg:top-0 lg:relative lg:block z-50 overflow-y-auto lg:overflow-y-visible duration-200 ${showMenu ? 'translate-x-[-100%]' : ''}`}>
                     <div className="xl:text-[17px] lg:flex lg:text-[14px] text-2xl items-center justify-between font-semibold text-white relative">
                         {/* <div className="cursor-pointer">Trang chủ</div>
                     <div className="cursor-pointer">Phim bộ</div>
@@ -120,9 +121,11 @@ function Header({ menu, scrollToTop, conutries, movieGenre, onClickMovieGenre, b
                         </div>
                     </div>
 
-                    <div className="absolute top-10 -right-6 lg:hidden">
-                        <IoIosArrowDroprightCircle size={'3rem'} color="#2563EB" />
-                    </div>
+                </div>
+                <div className="absolute  lg:hidden"
+                    onClick={() => { setShowMenu(!showMenu) }}
+                >
+                    <IoIosArrowDroprightCircle size={'3rem'} color="#2563EB" />
                 </div>
 
                 <div className="lg:w-1/4 flex justify-end w-full">
