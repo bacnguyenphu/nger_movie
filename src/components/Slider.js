@@ -40,7 +40,7 @@ function Slider() {
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
-                loop={true}
+                loop={false}
                 autoplay={{
                     delay: 3000, // Đặt thời gian delay (3 giây cho mỗi slide)
                     disableOnInteraction: false, // Giữ autoplay khi người dùng tương tác
