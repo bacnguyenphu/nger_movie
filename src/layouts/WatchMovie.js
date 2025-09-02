@@ -9,7 +9,6 @@ import InforMovieOnBanner from "../components/InforMovieOnBanner";
 function WatchMovie() {
 
     const params = useParams()
-    console.log(params);
 
     const [inforMovie, setInforMovie] = useState({})
     const [showModalWatch, setShowModalWatch] = useState(false)
